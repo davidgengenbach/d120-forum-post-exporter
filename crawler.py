@@ -23,12 +23,14 @@ def get_arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Crawl d120 forum page")
     parser.add_argument(
         "--start-url",
-        default="https://www2.fachschaft.informatik.tu-darmstadt.de/forum/viewforum.php?f=219"
+        default="https://www2.fachschaft.informatik.tu-darmstadt.de/forum/viewforum.php?f=219",
+        help="Where to start crawling - has to but a forum (NOT a thread)"
     )
     parser.add_argument(
         "--crawl-threads",
         default=False,
-        action="store_true"
+        action="store_true",
+        help="Crawl thread posts"
     )
     args = parser.parse_args()
     return args
