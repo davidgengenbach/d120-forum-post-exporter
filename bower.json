@@ -1,0 +1,22 @@
+{
+  "name": "d120-forum-post-exporter",
+  "homepage": "https://github.com/davidgengenbach/d120-forum-post-exporter",
+  "authors": [
+    "David Gengenbach <davidgengenbach@gmx.de>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "site/js/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4"
+  }
+}

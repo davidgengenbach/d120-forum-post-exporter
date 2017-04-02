@@ -10,13 +10,16 @@ import json
 def main():
     args = get_arguments()
     browser = get_browser()
-    links = get_links(args.start_url, num_pages=args.num_pages, page_size=args.forum_items_per_page, browser=browser)
+    threads = get_links(args.start_url, num_pages=args.num_pages, page_size=args.forum_items_per_page, browser=browser)
     if args.crawl_threads:
-        for link in links:
-            link.thread = crawl_thread(link, browser)
+        for thread in threads:
+            thread.thread = crawl_thread(thread, browser)
 
     with open('data/posts.json', 'w') as f:
-        json.dump(links, f, indent=4, sort_keys=True)
+        json.dump({
+            'args': args.__dict__,
+            'threads': threads
+        }, f, indent=4, sort_keys=True)
 
 
 def get_arguments() -> argparse.Namespace:

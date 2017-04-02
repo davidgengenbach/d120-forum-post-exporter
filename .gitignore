@@ -1,2 +1,3 @@
 data/*
 !.gitkeep
+site/js/lib/

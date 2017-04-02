@@ -1,0 +1,35 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>d120</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body ng-app="App" ng-controller="MainCtrl">
+    <div class="container">
+        <div class="thread" ng-repeat="thread in threads">
+            <div class="thread__header" ng-click="thread.open = !thread.open">
+                <p class="thread__title">{{thread.title}}</p>
+                <p class="thread__date">{{thread.date}}</p>
+            </div>
+
+            <div class="thread__posts" ng-show="thread.open">
+                <a class="thread__link" ng-href="{{thread.url}}" target="_blank">Link zum Eintrag</a>
+                <div ng-repeat="post in thread.thread">
+                    <div ng-bind-html="post.body_html"></div>
+                    <hr ng-if="!$last" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/lib/angular/angular.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

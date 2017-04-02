@@ -1,0 +1,59 @@
+html,
+body {
+   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 300;
+   color: #111;
+   font-size: 16px;
+   line-height: 20px;
+}
+
+.thread {
+    position: relative;
+    margin-bottom: 14px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+
+.thread .thread__link {
+    display: block;
+    margin-bottom: 14px;
+}
+
+.thread .thread__header {
+    padding: 14px;
+    cursor: pointer;
+}
+
+.thread .thread__header:hover {
+    background: #EEE;
+}
+
+.thread .thread__title {
+    max-width: 90%;
+}
+
+.thread .thread__date {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    color: #666;
+}
+
+.thread .thread__posts {
+    padding: 14px;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
