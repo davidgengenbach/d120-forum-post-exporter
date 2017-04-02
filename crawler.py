@@ -10,7 +10,7 @@ import json
 def main():
     args = get_arguments()
     browser = get_browser()
-    links = get_links(args.start_url, num_pages=1, browser=browser)
+    links = get_links(args.start_url, num_pages=args.num_pages, page_size=args.forum_items_per_page, browser=browser)
     if args.crawl_threads:
         for link in links:
             link.thread = crawl_thread(link, browser)
@@ -24,6 +24,7 @@ def get_arguments() -> argparse.Namespace:
     parser.add_argument(
         "--start-url",
         default="https://www2.fachschaft.informatik.tu-darmstadt.de/forum/viewforum.php?f=219",
+        type=str,
         help="Where to start crawling - has to but a forum (NOT a thread)"
     )
     parser.add_argument(
@@ -31,6 +32,18 @@ def get_arguments() -> argparse.Namespace:
         default=False,
         action="store_true",
         help="Crawl thread posts"
+    )
+    parser.add_argument(
+        "--num-pages",
+        default=1,
+        type=int,
+        help="How many pages should be crawled"
+    )
+    parser.add_argument(
+        "--forum-items-per-page",
+        default=50,
+        type=int,
+        help="How many items are on one forum page"
     )
     args = parser.parse_args()
     return args
