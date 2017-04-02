@@ -6,22 +6,27 @@ from attrdict import AttrDict
 import bs4
 import json
 
+
 def main():
     args = get_arguments()
-    links = get_links(args.start_url, num_pages = 4)
+    links = get_links(args.start_url, num_pages=4)
     with open('data/posts.json', 'w') as f:
-        json.dump(links, f, indent = 4, sort_keys = True)
+        json.dump(links, f, indent=4, sort_keys=True)
+
 
 def get_arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Crawl d120 forum page")
     parser.add_argument(
-        "--start-url", default="https://www2.fachschaft.informatik.tu-darmstadt.de/forum/viewforum.php?f=219")
+        "--start-url",
+        default="https://www2.fachschaft.informatik.tu-darmstadt.de/forum/viewforum.php?f=219"
+    )
     args = parser.parse_args()
     return args
 
 
 def get_browser() -> Browser:
     return Browser()
+
 
 def parse_link(link: bs4.element.Tag, domain: str) -> AttrDict:
     out = AttrDict()
@@ -31,6 +36,7 @@ def parse_link(link: bs4.element.Tag, domain: str) -> AttrDict:
     out.date = link.select('a:nth-of-type(3)')[0].text
     out.url = domain + link.select('a:nth-of-type(1)')[0].attrs['href'].replace('./', '/')
     return out
+
 
 def get_links(start_url: str, num_pages: int = 1, page_size: int = 50) -> list:
     browser = get_browser()
